@@ -1,4 +1,4 @@
-### PFE-RAG-Immo
+### SFE-RAG-Immo
 
 ### Conception et Implémentation d'un Système GraphRAG pour l'Audit Intelligent et la Conformité Automatisée des Contrats Immobiliers.
 
