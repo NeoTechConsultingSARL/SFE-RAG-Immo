@@ -25,3 +25,36 @@ Le projet introduit des techniques avancées pour optimiser la précision du sys
 Application du LLM pour identifier les correspondances sémantiques entre les schémas SQL et les clauses juridiques contractuelles.
 #### Audit de Conformité et Boucle d'Action 
 Mise en œuvre d'agents intelligents capables d'opérer une comparaison analytique entre les données prévisionnelles et réelles, générant automatiquement des brouillons de communication personnalisés selon la gravité des anomalies détectées.
+
+### Tâche 1 : Analyse du dictionnaire de données et conception du schéma Neo4j
+##### Mapping du dictionnaire de données (SQL vers PDF)
+Voici la structure de correspondance entre les données métiers et la base de données SQL pour l'intégration Neo4j :
+•	 Vendeur (t_company)
+      •	Propriétés : Nom, Adresse
+•	 Client (t_client)
+      •	Propriétés : Nom, CIN, ID
+•	 Projet (t_projet)
+      •	Propriétés : Nom
+•	 Bien (t_appartement)
+      •	Propriétés : Nom, Prix, ID_Projet
+•	 Contrat (t_contrat)
+      •	Propriétés : Prix de vente, Avance, ID_Client, ID_Bien
+•	 Échéancier (t_reglementprevu)
+      •	Propriétés : Date prévue, Montant, ID_Contrat
+•	 Paiements Réels (t_operation)
+      •	Propriétés : Montant, Date de règlement, ID_Contrat
+##### Modélisation du Graphe de Connaissances (Relations)
+Le schéma Neo4j repose sur les relations logiques suivantes pour permettre le "Reasoning" de l'IA :
+•	(Client) —[:SIGNE]—> (Contrat) : Lie l'acheteur à son engagement juridique.
+•	(Contrat) —[:CONCERNE]—> (Bien) : Identifie l'unité (Appartement/Local) vendue.
+•	(Bien) —[:APPARTIENT_À]—> (Projet) : Rattache le bien à son programme immobilier.
+•	(Contrat) —[:A_GÉNÉRÉ]—> (Opération) : Suivi des flux financiers réels (4 360 transactions).
+•	(Contrat) —[:DOIT_PAYER]—> (Règlement Prévu) : Comparaison avec l'échéancier théorique.
+•	(Projet) —[:GÉRÉ_PAR]—> (Vendeur) : Identification du promoteur responsable.
+
+### Tâche 2 : Développement du module d'extraction de texte et d'anonymisation des PDF
+Mise en place du pipeline de traitement des documents non structurés.
+Extraction : Utilisation de PyMuPDF pour transformer les 64 contrats PDF en texte brut.
+Nettoyage : Suppression des sauts de ligne et espaces superflus via Regex.
+Anonymisation : Protection des données personnelles par masquage automatique (Regex) des CIN, numéros de téléphone et emails.
+Note : Les données sensibles sont exclues du dépôt GitHub via le fichier .gitignore.
