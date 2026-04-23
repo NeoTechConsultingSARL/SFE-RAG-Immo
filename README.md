@@ -77,5 +77,3 @@ Extraction : Utilisation de PyMuPDF pour transformer les 64 contrats PDF en text
 Nettoyage : Suppression des sauts de ligne et espaces superflus via Regex.
 
 Anonymisation : Protection des données personnelles par masquage automatique (Regex) des CIN, numéros de téléphone et emails.
-
-Note : Les données sensibles sont exclues du dépôt GitHub via le fichier .gitignore.
