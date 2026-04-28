@@ -4,5 +4,6 @@ output
 bases_sql
 __pycache__
 .env
-*.json
 *.txt
+*.json
+
