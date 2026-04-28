@@ -81,7 +81,8 @@ Anonymisation : Protection des données personnelles par masquage automatique (R
 ### Tâche 3 : Implémentation de la reconnaissance d'entités avec Mistral-7B et LangChain
 Cette étape transforme le texte brut anonymisé en données structurées prêtes pour l'injection dans un graphe Neo4j.
 
-##### Architecture technique : Utilisation du LLM Mistral-7B (via Ollama) orchestré par LangChain pour une extraction locale et sécurisée.
+##### Architecture technique : 
+Utilisation du LLM Mistral-7B (via Ollama) orchestré par LangChain pour une extraction locale et sécurisée.
 
 ##### Stratégie d'extraction (Prompt Engineering) :
 
@@ -89,7 +90,8 @@ Conception de prompts spécialisés pour extraire : Client, CIN (Masqué), Dési
 
 Optimisation spécifique pour la détection des dates de signature souvent situées en fin de contrat.
 
-##### Traitement des anomalies : Développement d'un pipeline de reprise (final_extraction.py) pour traiter les contrats complexes présentant des structures non standards.
+##### Traitement des anomalies : 
+Développement d'un pipeline de reprise (final_extraction.py) pour traiter les contrats complexes présentant des structures non standards.
 
 ##### Normalisation des données :
 
